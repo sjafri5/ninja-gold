@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, session, redirect, url_for
 import random
+import datetime
 import os
 
 def calculate_earnings(building):
@@ -11,7 +12,9 @@ def calculate_earnings(building):
             }
 
     value_change = random.randint(options[building]['min'], options[building]['max']);
-    return value_change
+    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %I:%M%p")
+
+    return { 'value_change': value_change, 'timestamp':  timestamp }
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
@@ -26,16 +29,17 @@ def index():
 @app.route('/process_money', methods=['GET', 'POST'])
 def process_money():
     if request.method == 'POST':
-        gold_count = session['gold_count']
         building = request.form['building']
         activities = session['activities']
-        value_change = calculate_earnings(building)
-        activities.append(value_change)
+        earnings = calculate_earnings(building)
+
+        gold_count = session['gold_count'] + earnings['value_change']
+        activities.append(earnings)
+
         session['activities'] = activities
+        session['gold_count'] = gold_count 
 
 
-        print(value_change)
-        print(activities)
         return render_template('index.html', gold_count=gold_count, activities=activities)
 
 

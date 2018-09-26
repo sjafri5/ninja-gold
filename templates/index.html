@@ -42,8 +42,8 @@
 
   <h4>Activity</h4>
   <div style="overflow-y: scroll; height:150px;">
-    {% for change in activities %}
-    <h6>you earned {{ change }} pieces of gold.</h6>
+    {% for earning in activities %}
+    <h6>you earned {{ earning.value_change }} pieces of gold. ({{ earning.timestamp }})</h6>
     {% endfor %}
   </div>
 </div> 
