@@ -1,49 +1,62 @@
 <!doctype html>
 <link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }}
-<h3>Your Gold</h3>
-<input type="text" value="{{ gold_count }}" name="gold_count">
 
-<div> 
-  <span style="display: inline"> 
-    <h4>Farm</h4>
-    <p>Earns 10-20 Gold</p>
-    <form action="/process_money" method="post">
-      <input type="hidden" name="building" value="farm" />
-      <input type="submit" value="Find Gold!"/>
-    </form>
 
-  </span> 
-  <span style="display: inline"> 
-    <h4>Cave</h4>
-    <p>Earns 5-10 Gold</p>
-    <form action="/process_money" method="post">
-      <input type="hidden" name="building" value="cave" />
-      <input type="submit" value="Find Gold!"/>
-    </form>
+<div class="container"> 
+  <div class="gold-header">
+    <h4>Your Gold</h4>
+    <input type="text" value="{{ gold_count }}" name="gold_count">
+  </div>
 
-  </span> 
-  <span style="display: inline"> 
-    <h4>House</h4>
-    <p>Earns 2-5Gold</p>
-    <form action="/process_money" method="post">
-      <input type="hidden" name="building" value="house" />
-      <input type="submit" value="Find Gold!"/>
-    </form>
+  <div>
+  <ul class="parent"> 
+      <li>
+        <h4>Farm</h4>
+        <p>Earns 10-20 Gold</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="farm" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </li> 
+      <li> 
+        <h4>Cave</h4>
+        <p>Earns 5-10 Gold</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="cave" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
 
-  </span> 
-  <span style="display: inline"> 
-    <h4>Casino</h4>
-    <p>Earns/Takes 0-50 Gold</p>
-    <form action="/process_money" method="post">
-      <input type="hidden" name="building" value="casino" />
-      <input type="submit" value="Find Gold!"/>
-    </form>
-  </span> 
+      </li> 
+      <li> 
+        <h4>House</h4>
+        <p>Earns 2-5Gold</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="house" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
 
-  <h4>Activity</h4>
-  <div style="overflow-y: scroll; height:150px;">
-    {% for earning in activities %}
-    <h6>you earned {{ earning.value_change }} pieces of gold. ({{ earning.timestamp }})</h6>
-    {% endfor %}
+      </li> 
+      <li> 
+        <h4>Casino</h4>
+        <p>Earns/Takes 0-50 Gold</p>
+        <form action="/process_money" method="post">
+          <input type="hidden" name="building" value="casino" />
+          <input type="submit" value="Find Gold!"/>
+        </form>
+      </li> 
+  </ul>
+  </div>
+
+  <div class="activity">
+    <h4>Activity</h4>
+    <div>
+      {% for earning in activities %}
+      {% if earning.value_change > 0  %}
+      <h6>Earned {{ earning.value_change }} golds from the {{ earning.building }}! ({{ earning.timestamp }})</h6>
+      {% else  %}
+      <h6 class="loss">Entered a Casino and lost {{ earning.value_change }} gold... Ouch.. ({{ earning.timestamp}}!)</h6>
+      {% endif %}
+      {% endfor %}
+    </div>
   </div>
 </div> 

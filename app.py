@@ -14,7 +14,7 @@ def calculate_earnings(building):
     value_change = random.randint(options[building]['min'], options[building]['max']);
     timestamp = datetime.datetime.now().strftime("%Y-%m-%d %I:%M%p")
 
-    return { 'value_change': value_change, 'timestamp':  timestamp }
+    return { 'building': building, 'value_change': value_change, 'timestamp':  timestamp }
 
 app = Flask(__name__)
 app.secret_key = os.urandom(24)

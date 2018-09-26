@@ -1,3 +1,58 @@
-h4 {
-  color: blue;
+h6 {
+  padding-left: 10;
+}
+
+.loss {
+  color: red;
+}
+
+.container {
+  margin: 20px; 
+  padding: 20px; 
+}
+
+.gold-header {
+  width: 100% !important;
+  height: 60px !important;
+  white-space: nowrap;
+  display:inline-block;
+  margin-bottom: 20px;
+  padding-top: 50px;
+}
+
+.gold-header h4 {
+  vertical-align: middle;
+  margin-right: 10px;
+  display:inline;
+}
+
+.gold-header input {
+  vertical-align: middle;
+  display:inline;
+}
+
+.parent {
+  padding: 0;
+  display:inline-block;
+  list-style: none;
+  width: 100% !important;
+  height: 200px !important;
+  white-space: nowrap;
+  overflow-y: hidden;
+}
+
+.parent > li {
+  display: inline-block;
+  text-align: center;
+  width: 24%;
+  height: 90%;
+  border: 2px solid black;
+} 
+
+.activity  div {
+    overflow-y: scroll; 
+    position : relative; 
+    bottom:0;
+    height: 200px;
+    border: 2px solid black;
 }
