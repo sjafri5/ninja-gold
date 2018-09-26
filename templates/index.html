@@ -1,3 +1,41 @@
 <!doctype html>
 <h3>Your Gold</h3>
 <input type="text" value="0" name="gCount">
+
+<div> 
+  <span style="display: inline"> 
+    <h4>Farm</h4>
+    <p>Earns 10-20 Gold</p>
+    <form action="/process_money" method="post">
+      <input type="hidden" name="building" value="farm" />
+      <input type="submit" value="Find Gold!"/>
+    </form>
+
+  </span> 
+  <span style="display: inline"> 
+    <h4>Cave</h4>
+    <p>Earns 5-10 Gold</p>
+    <form action="/process_money" method="post">
+      <input type="hidden" name="building" value="cave" />
+      <input type="submit" value="Find Gold!"/>
+    </form>
+
+  </span> 
+  <span style="display: inline"> 
+    <h4>House</h4>
+    <p>Earns 2-5Gold</p>
+    <form action="/process_money" method="post">
+      <input type="hidden" name="building" value="house" />
+      <input type="submit" value="Find Gold!"/>
+    </form>
+
+  </span> 
+  <span style="display: inline"> 
+    <h4>Casino</h4>
+    <p>Earns/Takes 0-50 Gold</p>
+    <form action="/process_money" method="post">
+      <input type="hidden" name="building" value="casino" />
+      <input type="submit" value="Find Gold!"/>
+    </form>
+  </span> 
+</div> 
