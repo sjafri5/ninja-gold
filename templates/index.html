@@ -1,4 +1,5 @@
 <!doctype html>
+<link rel="stylesheet" type="text/css" href={{ url_for('static', filename='style.css') }}
 <h3>Your Gold</h3>
 <input type="text" value="0" name="gCount">
 
@@ -38,4 +39,11 @@
       <input type="submit" value="Find Gold!"/>
     </form>
   </span> 
+
+  <h4>Activity</h4>
+  <div style="overflow-y: scroll; height:150px;">
+    {% for count in [2, 3, 4, 6, 9, 4, 43, 23, 43, 54, 64] %}
+    <h6>you earned {{ count }} pieces of gold.</h6>
+    {% endfor %}
+  </div>
 </div> 
