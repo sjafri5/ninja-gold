@@ -19,14 +19,23 @@ def calculate_earnings(building):
 app = Flask(__name__)
 app.secret_key = os.urandom(24)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
-    gold_count = 0
-    session['gold_count'] = gold_count
-    session['activities'] = []
-    return render_template('index.html', gold_count=gold_count)
+    if 'gold_count' in session:
+        gold_count = session['gold_count']
+    else: 
+        gold_count = 0
+        session['gold_count'] = gold_count
 
-@app.route('/process_money', methods=['GET', 'POST'])
+    if 'activities' in session:
+        activities= session['activities']
+    else: 
+        activities= []
+        session['activities'] = []
+
+    return render_template('index.html', gold_count=gold_count, activities=activities)
+
+@app.route('/process_money', methods=['POST'])
 def process_money():
     if request.method == 'POST':
         building = request.form['building']
@@ -39,8 +48,9 @@ def process_money():
         session['activities'] = activities
         session['gold_count'] = gold_count 
 
+        return redirect(url_for('index'))
 
-        return render_template('index.html', gold_count=gold_count, activities=activities)
+        # return render_template('index.html', gold_count=gold_count, activities=activities)
 
 
 if __name__ == '__main__':
