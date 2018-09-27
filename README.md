@@ -1,8 +1,10 @@
 # Ninja Gold
 
 ## setup
-`git clone https://github.com/sjafri5/ninja-gold.git`
-`cd hello_flask`
-`python app.py`
+`$ git clone https://github.com/sjafri5/ninja-gold.git`
 
-visit localhost:5000 to play
+`$ cd ninja-gold`
+
+`$ python app.py`
+
+visit localhost:5000 to play!
