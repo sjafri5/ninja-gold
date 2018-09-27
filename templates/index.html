@@ -51,11 +51,11 @@
     <h4>Activity</h4>
     <div>
       {% for earning in activities %}
-      {% if earning.value_change > 0  %}
-      <h6>Earned {{ earning.value_change }} golds from the {{ earning.building }}! ({{ earning.timestamp }})</h6>
-      {% else  %}
-      <h6 class="loss">Entered a Casino and lost {{ earning.value_change }} gold... Ouch.. ({{ earning.timestamp}}!)</h6>
-      {% endif %}
+        {% if earning.value_change > 0  %}
+        <h6>Earned {{ earning.value_change }} golds from the {{ earning.building }}! ({{ earning.timestamp }})</h6>
+        {% else  %}
+        <h6 class="loss">Entered a Casino and lost {{ earning.value_change }} gold... Ouch.. ({{ earning.timestamp}}!)</h6>
+        {% endif %}
       {% endfor %}
     </div>
   </div>

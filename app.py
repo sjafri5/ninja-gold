@@ -40,9 +40,10 @@ def process_money():
     if request.method == 'POST':
         building = request.form['building']
         earnings = calculate_earnings(building)
+        activities = session['activities']
 
         gold_count = session['gold_count'] + earnings['value_change']
-        activities = session['activities'].append(earnings)
+        activities.append(earnings)
 
         session['activities'] = activities
         session['gold_count'] = gold_count 
